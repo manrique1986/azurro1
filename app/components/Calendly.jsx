@@ -1,8 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CalendlyWidget = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Se ejecuta solo en el cliente
+  }, []);
+
+  if (!isClient) {
+    return null; // No renderiza nada en el servidor
+  }
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -24,3 +34,4 @@ const CalendlyWidget = () => {
 };
 
 export default CalendlyWidget;
+

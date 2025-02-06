@@ -1,8 +1,7 @@
-
-import Calendly from './Calendly.jsx';
+import dynamic from 'next/dynamic';
 
 // Cargamos el componente Calendly dinámicamente con ssr: false para evitar que se renderice en el servidor
-
+const Calendly = dynamic(() => import('./Calendly.jsx'), { ssr: false });
 
 const SeptimoBloque = () => {
   return (
@@ -32,3 +31,4 @@ const SeptimoBloque = () => {
 };
 
 export default SeptimoBloque;
+
